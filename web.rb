@@ -4,10 +4,6 @@ require 'mongo_mapper'
 require 'active_support'
 require 'twilio-ruby'
 
-enable :sessions
-
-TWILIO_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
-
 class User
   include MongoMapper::Document
 
@@ -17,6 +13,7 @@ class User
   key :phone_number, String
 
   many :images
+  
 end
 
 class Image
@@ -28,33 +25,35 @@ class Image
   belongs_to :user
 end
 
+# Configuration
+
 configure do
   MongoMapper.setup({'production' => {'uri' => ENV['MONGOHQ_URL']}}, 'production')
 end
-
-CALLBACK_URL = "http://#{ENV['DOMAIN']}/oauth/callback"
 
 Instagram.configure do |config|
   config.client_id = ENV['CLIENT_ID']
   config.client_secret = ENV['CLIENT_SECRET']
 end
 
-def process_sub(req_body, signature)
-  fail Instagram::InvalidSignature unless signature
+TWILIO_CLIENT = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
 
-  Instagram.process_subscription(req_body, signature: signature) do |handler|
-    handler.on_user_changed do |user_id, data|
-      user = User.find_by_instagram_id(user_id)
-      @client = Instagram.client(:access_token => user.access_token)
-      text = @client.user_recent_media[0]
-      user.images.create(:data => text)
-      TWILIO_CLIENT.account.messages.create(
-        :from => ENV['TWILIO_FROM'],
-        :to => user.phone_number,
-        :body => "Thanks for checking in!"
-      )
-    end
-  end
+enable :sessions
+
+# OAuth stuff
+
+CALLBACK_URL = "http://#{ENV['DOMAIN']}/oauth/callback"
+
+get "/oauth/connect" do
+  redirect Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
+end
+
+get '/oauth/callback' do
+  response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
+  session[:access_token] = response.access_token
+  user = Instagram.client(:access_token => response.access_token).user
+  User.first_or_create(:access_token => session[:access_token], :instagram_id => user.id, :instagram_name => user.username)
+  redirect "/hello"
 end
 
 get '/activity' do
@@ -85,30 +84,43 @@ get '/' do
   '<a href="/oauth/connect">Connect with Instagram</a>'
 end
 
-get "/oauth/connect" do
-  redirect Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
+get '/hello' do
+  'Boo ya!'
 end
 
-get '/oauth/callback' do
-  response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-  session[:access_token] = response.access_token
-  user = Instagram.client(:access_token => response.access_token).user
-  User.first_or_create(:access_token => session[:access_token], :instagram_id => user.id, :instagram_name => user.username)
-  redirect "/hello"
+get '/status' do
+  erb :status #, :locals => { :green }
 end
 
-get "/hello" do
-  "Boo ya!"
-end
-
+# Verifies subscription (http://instagram.com/developer/realtime/)
 get '/callback' do
   request['hub.challenge'] if request['hub.verify_token'] == ENV['HUB_TOKEN']
 end
 
+# Receive subscription (http://instagram.com/developer/realtime/)
 post '/callback' do
   begin
-    process_sub(request.body.read, env['HTTP_X_HUB_SIGNATURE'])
+    process_subscription(request.body.read, env['HTTP_X_HUB_SIGNATURE'])
   rescue Instagram::InvalidSignature
     halt 403
+  end
+end
+
+# Do magic...
+def process_subscription(body, signature)
+  fail Instagram::InvalidSignature unless signature
+
+  Instagram.process_subscription(body, signature: signature) do |handler|
+    handler.on_user_changed do |user_id, data|
+      user = User.find_by_instagram_id(user_id)
+      @client = Instagram.client(:access_token => user.access_token)
+      text = @client.user_recent_media[0]
+      user.images.create(:data => text)
+      TWILIO_CLIENT.account.messages.create(
+        :from => ENV['TWILIO_FROM'],
+        :to => user.phone_number,
+        :body => "Thanks for checking in!"
+      )
+    end
   end
 end
