@@ -28,7 +28,7 @@ TWILIO_TOKEN:        secret-tokens
 
 ## The dashboard
 
-There's a nice status page that shows the status of the youths you're tracking.
+There's a nice status page that shows the status of the youths you're tracking. Clicking on their username shows you their last selfie/picture and location.
 
 ![grounded](https://cloud.githubusercontent.com/assets/4483/3142121/7c39b4d4-e9ab-11e3-81c9-64ef8682e25a.png)
 
