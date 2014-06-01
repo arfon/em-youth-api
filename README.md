@@ -30,7 +30,11 @@ TWILIO_TOKEN:        secret-tokens
 
 Kind of. In the spirit of hack days, here's an equally-hacked-together [application](https://github.com/karthikb87/SpyOnKids) that uses this API and a short demo of the direction we were planning on taking this thing:
 
+<div style="text-align:center">
+
 [![Demo](https://cloud.githubusercontent.com/assets/4483/3140933/fb163ebe-e94f-11e3-9690-9c41808bc469.png)](https://www.youtube.com/watch?v=CZWj3xXY95s&feature=em-share_video_user)
+
+</div>
 
 #### Prior art
 
