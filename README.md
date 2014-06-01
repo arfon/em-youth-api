@@ -30,7 +30,7 @@ TWILIO_TOKEN:        secret-tokens
 
 There's a nice status page that shows the status of the youths you're tracking.
 
-![a6537e38-2200-4255-b381-5873a308a2c4](https://cloud.githubusercontent.com/assets/4483/3141962/69eb5ef8-e9a2-11e3-8c46-a33780f3fc55.png)
+![grounded](https://cloud.githubusercontent.com/assets/4483/3142116/2cbd3386-e9ab-11e3-8e26-d527995c9191.png)
 
 
 ## There's a native app too!
