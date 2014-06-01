@@ -59,7 +59,8 @@
 
       <p class="lead">Last check in for <%= user.instagram_name %></p>
       <center>
-        <img src="<%= user.images.last[:data][:images][:standard_resolution][:url] %>" style="width: 95%;" />
+        <img src="<%= user.images.last[:data][:images][:standard_resolution][:url] %>" style="width: 95%; padding-bottom: 20px;" />
+        <iframe width="95%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<%= user.images.last[:data][:location][:latitude] %>,<%= user.images.last[:data][:location][:longitude] %>&amp;output=embed"</iframe>
       </center>
     </div>
 
