@@ -1,7 +1,7 @@
 Grounded
 ======
 
-Built as part of the [Adler Planetarium's](http://www.adlerplanetarium.org/) [Civic Hack Day](http://civichack.adlerplanetarium.org/2014/) on 31 May 2014. This is a simple application that monitors the Instagram API for updates from a group of users (who have authorised the application to receive updates from their account) and then makes this information available to others.
+Built as part of the [Adler Planetarium's](http://www.adlerplanetarium.org/) [Civic Hack Day](http://civichack.adlerplanetarium.org/2014/) on 31 May 2014. This idea came from the [Mikva Challenge](http://www.mikvachallenge.org/) Juvenile Justice Council in Chicago. This is a simple application that monitors the Instagram API for updates from a group of users (who have authorised the application to receive updates from their account) and then makes this information available to others.
 
 ## Why does this exist?
 
