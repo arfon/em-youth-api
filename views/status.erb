@@ -66,7 +66,7 @@
         <!-- List group -->
         <% green.each do |green| %>
         <ul class="list-group">
-          <li class="list-group-item"><%= green.instagram_name %></li>
+          <li class="list-group-item"><%= green.instagram_name %> <a href="sms:<%= red.phone_number %>" class="actions"><span class="label label-success">Send props!</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
         <% end %>
       </div>
