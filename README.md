@@ -13,7 +13,7 @@ A task is then run every [~10 minutes](https://github.com/arfon/em-youth-api/blo
 
 ## Setup
 
-Heroku is your friend with a [MongoHQ addon](https://addons.heroku.com/mongohq) and the [Heroku scheduler](https://addons.heroku.com/scheduler) to run the [background worker](https://github.com/arfon/em-youth-api/blob/master/worker.rb). There's a bunch of environment variables you need to confure:
+Heroku is your friend with a [MongoHQ addon](https://addons.heroku.com/mongohq) and the [Heroku scheduler](https://addons.heroku.com/scheduler) to run the [background worker](https://github.com/arfon/em-youth-api/blob/master/worker.rb). There's a bunch of environment variables you need to configure:
 
 ```
   CLIENT_ID:           instagram-client-id
