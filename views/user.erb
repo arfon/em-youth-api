@@ -58,7 +58,9 @@
       </div>
 
       <p class="lead">Last check in for <%= user.instagram_name %></p>
-      <img src="<%= user.images.last[:data][:images][:low_resolution][:url] %>" />
+      <center>
+        <img src="<%= user.images.last[:data][:images][:standard_resolution][:url] %>" style="width: 80%;" />
+      </center>
     </div>
 
     <div id="footer">
