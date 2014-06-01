@@ -20,18 +20,15 @@ class User
   many :images
   
   def green!
-    status = "green"
-    save
+    update_attributes(:status => "green")
   end
   
   def orange!
-    status = "orange"
-    save
+    update_attributes(:status => "orange")
   end
   
   def red!
-    status = "red"
-    save    
+    update_attributes(:status => "red")
   end
 end
 
