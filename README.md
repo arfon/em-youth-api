@@ -16,15 +16,22 @@ A task is then run every [~10 minutes](https://github.com/arfon/em-youth-api/blo
 Heroku is your friend with a [MongoHQ addon](https://addons.heroku.com/mongohq) and the [Heroku scheduler](https://addons.heroku.com/scheduler) to run the [background worker](https://github.com/arfon/em-youth-api/blob/master/worker.rb). There's a bunch of environment variables you need to configure:
 
 ```
-  CLIENT_ID:           instagram-client-id
-  CLIENT_SECRET:       instagram-secret
-  DOMAIN:              my-app.herokuapp.com
-  HUB_TOKEN:           a-secure-token
-  MONGOHQ_URL:         mongodb://blah:blah@nosql.rules.com:1234/awesomeapp
-  TWILIO_FROM:         +5551234567
-  TWILIO_SID:          secret-codes
-  TWILIO_TOKEN:        secret-tokens
+CLIENT_ID:           instagram-client-id
+CLIENT_SECRET:       instagram-secret
+DOMAIN:              my-app.herokuapp.com
+HUB_TOKEN:           a-secure-token
+MONGOHQ_URL:         mongodb://blah:blah@nosql.rules.com:1234/awesomeapp
+TWILIO_FROM:         +5551234567
+TWILIO_SID:          secret-codes
+TWILIO_TOKEN:        secret-tokens
 ```
+
+## There's a client app too!
+
+Kind of. In the spirit of hack days, here's an equally-hacked-together [application](https://github.com/karthikb87/SpyOnKids) that uses this API and a short demo of the direction we were planning on taking this thing:
+
+[![Demo](https://cloud.githubusercontent.com/assets/4483/3140933/fb163ebe-e94f-11e3-9690-9c41808bc469.png)](https://www.youtube.com/watch?v=CZWj3xXY95s&feature=em-share_video_user)
+
 #### Prior art
 
 Heavily influenced by this rather nice example application https://github.com/toctan/instahust
