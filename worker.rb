@@ -9,12 +9,14 @@ if Time.now.between?(START_TIME, END_TIME)
   User.all.each do |user|
     next unless user.images.any?
     if user.images.last.created_at < 2.hours.ago
+      user.red!
       TWILIO_CLIENT.account.messages.create(
         :from => ENV['TWILIO_FROM'],
         :to => user.phone_number,
         :body => "Hey, it's been two hours since you last checked in. Calling your supervisor..."
       )
     elsif user.images.last.created_at < 1.hour.ago
+      user.orange!
       TWILIO_CLIENT.account.messages.create(
         :from => ENV['TWILIO_FROM'],
         :to => user.phone_number,

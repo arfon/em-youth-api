@@ -41,6 +41,12 @@
     .container .text-muted {
       margin: 20px 0;
     }
+    
+    a.actions{
+      float: right;
+      text-decoration: none;
+    }
+    
     </style>
   </head>
 
@@ -53,35 +59,44 @@
 
       <p class="lead">Click on a username to see more information about their last check in</p>
 
+      <% if green.any? %>
       <div class="panel panel-success">
         <!-- Default panel contents -->
         <div class="panel-heading">Recently checked in</div>
         <!-- List group -->
+        <% green.each do |green| %>
         <ul class="list-group">
-          <li class="list-group-item">Stuart Lynn</li>
-
+          <li class="list-group-item"><%= green.instagram_name %></li>
         </ul>
+        <% end %>
       </div>
+      <% end %>
       
+      <% if orange.any? %>
       <div class="panel panel-warning">
         <!-- Default panel contents -->
         <div class="panel-heading">1 hour overdue</div>
         <!-- List group -->
+        <% orange.each do |orange| %>
         <ul class="list-group">
-          <li class="list-group-item">Arfon Smith</li>
-
+          <li class="list-group-item"><%= orange.instagram_name %> <a href="sms:<%= red.phone_number %>" class="actions"><span class="label label-warning">Send reminder</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
+        <% end %>
       </div>
+      <% end %>
       
+      <% if red.any? %>
       <div class="panel panel-danger">
         <!-- Default panel contents -->
         <div class="panel-heading">2 hours overdue</div>
         <!-- List group -->
+        <% red.each do |red| %>
         <ul class="list-group">
-          <li class="list-group-item">Stuart Lynn</li>
-
+          <li class="list-group-item"><%= red.instagram_name %> <a href="tel:<%= red.phone_number %>" class="actions"><span class="label label-danger">Call now</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
+        <% end %>
       </div>
+      <% end %>
 
     </div>
 

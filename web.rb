@@ -11,9 +11,28 @@ class User
   key :access_token, String
   key :instagram_name, String
   key :phone_number, String
-
+  key :status, String
+  
+  scope :green, :status => 'green'
+  scope :orange, :status => 'orange'
+  scope :red, :status => 'red'
+  
   many :images
   
+  def green!
+    status = "green"
+    save
+  end
+  
+  def orange!
+    status = "orange"
+    save
+  end
+  
+  def red!
+    status = "red"
+    save    
+  end
 end
 
 class Image
@@ -89,7 +108,7 @@ get '/hello' do
 end
 
 get '/status' do
-  erb :status #, :locals => { :green }
+  erb :status, :locals => { :green => User.green, :orange => User.orange, :red => User.red }
 end
 
 # Verifies subscription (http://instagram.com/developer/realtime/)
@@ -116,6 +135,7 @@ def process_subscription(body, signature)
       @client = Instagram.client(:access_token => user.access_token)
       text = @client.user_recent_media[0]
       user.images.create(:data => text)
+      user.green!
       TWILIO_CLIENT.account.messages.create(
         :from => ENV['TWILIO_FROM'],
         :to => user.phone_number,
