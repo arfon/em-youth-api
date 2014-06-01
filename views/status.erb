@@ -79,7 +79,7 @@
         <!-- List group -->
         <% orange.each do |orange| %>
         <ul class="list-group">
-          <li class="list-group-item"><%= orange.instagram_name %> <a href="sms:<%= red.phone_number %>" class="actions"><span class="label label-warning">Send reminder</span> <span class="glyphicon glyphicon-phone"></span></a></li>
+          <li class="list-group-item"><%= orange.instagram_name %> <a href="sms:<%= orange.phone_number %>" class="actions"><span class="label label-warning">Send reminder</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
         <% end %>
       </div>
