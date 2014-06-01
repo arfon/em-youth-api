@@ -94,27 +94,11 @@ get '/oauth/callback' do
   session[:access_token] = response.access_token
   user = Instagram.client(:access_token => response.access_token).user
   User.first_or_create(:access_token => session[:access_token], :instagram_id => user.id, :instagram_name => user.username)
-  redirect "/nav"
+  redirect "/hello"
 end
 
-get "/nav" do
-  html =
-  """
-    <h1>Ruby Instagram Gem Sample Application</h1>
-    <ol>
-      <li><a href='/user_recent_media'>User Recent Media</a> Calls user_recent_media - Get a list of a user's most recent media</li>
-      <li><a href='/user_media_feed'>User Media Feed</a> Calls user_media_feed - Get the currently authenticated user's media feed uses pagination</li>
-      <li><a href='/location_recent_media'>Location Recent Media</a> Calls location_recent_media - Get a list of recent media at a given location, in this case, the Instagram office</li>
-      <li><a href='/media_search'>Media Search</a> Calls media_search - Get a list of media close to a given latitude and longitude</li>
-      <li><a href='/media_popular'>Popular Media</a> Calls media_popular - Get a list of the overall most popular media items</li>
-      <li><a href='/user_search'>User Search</a> Calls user_search - Search for users on instagram, by name or username</li>
-      <li><a href='/location_search'>Location Search</a> Calls location_search - Search for a location by lat/lng</li>
-      <li><a href='/location_search_4square'>Location Search - 4Square</a> Calls location_search - Search for a location by Fousquare ID (v2)</li>
-      <li><a href='/tags'>Tags</a>Search for tags, view tag info and get media by tag</li>
-      <li><a href='/limits'>View Rate Limit and Remaining API calls</a>View remaining and ratelimit info.</li>
-    </ol>
-  """
-  html
+get "/hello" do
+  "Boo ya!"
 end
 
 get '/callback' do
@@ -127,5 +111,4 @@ post '/callback' do
   rescue Instagram::InvalidSignature
     halt 403
   end
-  'Gocha!'
 end
