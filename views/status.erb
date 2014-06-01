@@ -66,7 +66,7 @@
         <!-- List group -->
         <% green.each do |green| %>
         <ul class="list-group">
-          <li class="list-group-item"><%= green.instagram_name %> <a href="sms:<%= green.phone_number %>" class="actions"><span class="label label-success">Send props!</span> <span class="glyphicon glyphicon-phone"></span></a></li>
+          <li class="list-group-item"><a href="/status/<%= green.instagram_id %>"><%= green.instagram_name %></a> <a href="sms:<%= green.phone_number %>" class="actions"><span class="label label-success">Send props!</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
         <% end %>
       </div>
@@ -79,7 +79,7 @@
         <!-- List group -->
         <% orange.each do |orange| %>
         <ul class="list-group">
-          <li class="list-group-item"><%= orange.instagram_name %> <a href="sms:<%= orange.phone_number %>" class="actions"><span class="label label-warning">Send reminder</span> <span class="glyphicon glyphicon-phone"></span></a></li>
+          <li class="list-group-item"><a href="/status/<%= orange.instagram_id %>"><%= orange.instagram_name %></a> <a href="sms:<%= orange.phone_number %>" class="actions"><span class="label label-warning">Send reminder</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
         <% end %>
       </div>
@@ -92,7 +92,7 @@
         <!-- List group -->
         <% red.each do |red| %>
         <ul class="list-group">
-          <li class="list-group-item"><%= red.instagram_name %> <a href="tel:<%= red.phone_number %>" class="actions"><span class="label label-danger">Call now</span> <span class="glyphicon glyphicon-phone"></span></a></li>
+          <li class="list-group-item"><a href="/status/<%= red.instagram_id %>"><%= red.instagram_name %></a> <a href="tel:<%= red.phone_number %>" class="actions"><span class="label label-danger">Call now</span> <span class="glyphicon glyphicon-phone"></span></a></li>
         </ul>
         <% end %>
       </div>

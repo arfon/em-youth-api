@@ -104,8 +104,13 @@ get '/hello' do
   'Boo ya!'
 end
 
-get '/status' do
-  erb :status, :locals => { :green => User.green, :orange => User.orange, :red => User.red }
+get '/status/?:user_id?' do
+  if params[:user_id]
+    user = User.find_by_instagram_id(params[:user_id])
+    erb :user, :locals => { :user => user }
+  else
+    erb :status, :locals => { :green => User.green, :orange => User.orange, :red => User.red }
+  end
 end
 
 # Verifies subscription (http://instagram.com/developer/realtime/)
