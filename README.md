@@ -15,7 +15,6 @@ A task is then run every [~10 minutes](https://github.com/arfon/em-youth-api/blo
 
 Heroku is your friend with a [MongoHQ addon](https://addons.heroku.com/mongohq) and the [Heroku scheduler](https://addons.heroku.com/scheduler) to run the [background worker](https://github.com/arfon/em-youth-api/blob/master/worker.rb). There's a bunch of environment variables you need to confure
 
-
 #### Prior art
 
 Heavily influenced by this rather nice example application https://github.com/toctan/instahust
