@@ -41,4 +41,4 @@ Kind of. In the spirit of hack days, here's an equally-hacked-together [applicat
 
 #### Prior art
 
-Heavily influenced by this rather nice example application https://github.com/toctan/instahust
+Heavily influenced by this rather nice example application that makes working with the Instagram realtime API a little easier https://github.com/toctan/instahust
