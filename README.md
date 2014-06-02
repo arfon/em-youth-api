@@ -39,6 +39,6 @@ Kind of. In the spirit of hack days, here's an equally-hacked-together [applicat
 
 [![Demo](https://cloud.githubusercontent.com/assets/4483/3140944/13ad0a74-e951-11e3-9cc4-d546ed235c8e.png)](https://www.youtube.com/watch?v=CZWj3xXY95s&feature=em-share_video_user)
 
-#### Prior art
+## Prior art
 
 Heavily influenced by this rather nice example application that makes working with the Instagram realtime API a little easier https://github.com/toctan/instahust
