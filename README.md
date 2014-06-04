@@ -1,7 +1,7 @@
 Grounded
 ======
 
-Built as part of the [Adler Planetarium's](http://www.adlerplanetarium.org/) [Civic Hack Day](http://civichack.adlerplanetarium.org/2014/) on 31 May 2014. This is a simple application that monitors the Instagram API for updates from a group of users (who have authorised the application to receive updates from their account) and then makes this information available to others.
+Built as part of the [Adler Planetarium's](http://www.adlerplanetarium.org/) [Civic Hack Day](http://civichack.adlerplanetarium.org/2014/) on 31 May 2014. This idea came from the [Mikva Challenge](http://www.mikvachallenge.org/) Juvenile Justice Council in Chicago. This is a simple application that monitors the Instagram API for updates from a group of users (who have authorised the application to receive updates from their account) and then makes this information available to others.
 
 ## Why does this exist?
 
@@ -28,9 +28,9 @@ TWILIO_TOKEN:        secret-tokens
 
 ## The dashboard
 
-There's a nice status page that shows the status of the youths you're tracking.
+There's a nice status page that shows the status of the youths you're tracking. Clicking on their username shows you their last selfie/picture and location.
 
-![a6537e38-2200-4255-b381-5873a308a2c4](https://cloud.githubusercontent.com/assets/4483/3141962/69eb5ef8-e9a2-11e3-8c46-a33780f3fc55.png)
+![grounded](https://cloud.githubusercontent.com/assets/4483/3142121/7c39b4d4-e9ab-11e3-81c9-64ef8682e25a.png)
 
 
 ## There's a native app too!
@@ -39,6 +39,6 @@ Kind of. In the spirit of hack days, here's an equally-hacked-together [applicat
 
 [![Demo](https://cloud.githubusercontent.com/assets/4483/3140944/13ad0a74-e951-11e3-9cc4-d546ed235c8e.png)](https://www.youtube.com/watch?v=CZWj3xXY95s&feature=em-share_video_user)
 
-#### Prior art
+## Prior art
 
-Heavily influenced by this rather nice example application https://github.com/toctan/instahust
+Heavily influenced by this rather nice example application that makes working with the Instagram realtime API a little easier https://github.com/toctan/instahust
