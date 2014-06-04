@@ -97,7 +97,7 @@ get '/activity' do
 end
 
 get '/' do
-  '<a href="/oauth/connect">Connect with Instagram</a>'
+  erb :index
 end
 
 get '/hello' do
